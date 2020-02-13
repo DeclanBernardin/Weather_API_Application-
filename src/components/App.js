@@ -9,7 +9,7 @@ class App extends Component {
       <div>
         <h1>Weather Teller</h1>
         <input></input>
-        <button onClick={() => this.props.dispatch({ type: 'reducerTest' })}>Reducer Test</button>
+        <button>Reducer Test</button>
 
         <div>
           <p>Powered By</p>

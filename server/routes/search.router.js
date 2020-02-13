@@ -6,7 +6,7 @@ const router = express.Router();
 router.post('/', (req, res) => {
     let searchQuery = req.body;
     console.log(searchQuery)
-    let url = ``;
+    let url = `http://api.weatherapi.com/v1/current.json?key=${process.env.API_KEY}&q=${searchQuery.search}&days=3`;
     axios
         .get(url)
         .then(result => {
