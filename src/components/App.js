@@ -4,12 +4,40 @@ import { connect } from 'react-redux'
 
 
 class App extends Component {
+
+  state = {
+    search: ''
+  }
+
+  handleChangeSearchLocation = (event) => {
+    console.log('typing in Input', event.target.value)
+    this.setState({
+      search: event.target.value
+    })
+  }
+  
+  findWeather = event => {
+    event.preventDefault();
+    console.log('searching for weather in', this.state.search);
+    this.props.dispatch({
+      type: 'FETCH_WEATHER',
+      payload: this.state
+    });
+    this.setState({
+      search: ''
+    }); 
+
+  }
+
+
+
+
   render() {
     return (
       <div>
         <h1>Weather Teller</h1>
-        <input></input>
-        <button>Reducer Test</button>
+        <input placeholder='enter location' onChange={this.handleChangeSearchLocation}></input>
+        <button onClick={this.findWeather}>Find Weather</button>
 
         <div>
           <p>Powered By</p>
