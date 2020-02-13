@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+ 
 
 
-
-function App() {
+class App extends Component {
+  render() {
   return (
     <div >
-      <h1>Test</h1>
+      <h1>Weather Teller</h1>
+      <button onClick={() => this.props.dispatch({type: 'reducerTest'})}>Reducer Test</button>
     </div>
   );
+  }
 }
 
-export default App;
+export default connect()(App);
