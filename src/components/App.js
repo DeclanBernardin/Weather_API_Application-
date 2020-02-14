@@ -10,6 +10,11 @@ class App extends Component {
     search: '',
     forecast: '3',
     data: [],
+    tempature: false,
+    wind: true,
+    pressure: true,
+    precip: true,
+    visability: true,
 
   }
 
@@ -51,49 +56,81 @@ class App extends Component {
 
     return (
       <div class="body">
+
         <h1 class="title">The Weather Teller App</h1>
+
         <div class="inputs">
-          <Input placeholder='enter location' style={{ color: '#FEFFFF', margin: '30px' }} onChange={this.handleChangeSearchLocation}></Input>
+          
+          <Input 
+          placeholder='enter location' 
+          style={{ color: '#FEFFFF', margin: '30px' }} 
+          onChange={this.handleChangeSearchLocation}
+          ></Input>
+
           The next
-          <Input value={this.state.forecast} placeholder='Forecast range' style={{ color: '#FEFFFF', margin: '10px', width: '35px', textAlign: 'center' }} type="number" min="3" max="10" onChange={this.handleChangeForecast}></Input>
+          <Input 
+          value={this.state.forecast} 
+          placeholder='Forecast range' 
+          style={{ color: '#FEFFFF', margin: '10px', width: '35px', textAlign: 'center' }} 
+          type="number" 
+          min="3" 
+          max="10" 
+          onChange={this.handleChangeForecast}
+          ></Input>
           day forecast.
+
           <br />
-          <Button onClick={this.findWeather} style={{ color: '#FEFFFF', margin: '30px', fontSize: '30px' }} >Find The Weather</Button>
+
+          <Button 
+          onClick={this.findWeather} 
+          style={{ color: '#FEFFFF', margin: '30px', fontSize: '30px' }} 
+          >Find The Weather</Button>
+
         </div>
 
 
-        {this.state.data.location ? <h1>{this.state.data.location.name}</h1> : <h1 style={{ color: '#17252A', fontSize: '50px', textAlign: 'center'}}>Enter in City Name, Zipcode, IP address, Canada Postalcode, UK Postcode, or Latitude and Longitude</h1>}
+        {this.state.data.location ? <h1>{this.state.data.location.name}</h1> 
+        : <h1 style={{ color: '#17252A', fontSize: '50px', textAlign: 'center' }}
+        >Enter in City Name, Zipcode, IP address, Canada Postalcode, UK Postcode, or Latitude and Longitude</h1>}
+       
         <h1 >{this.state.data.location ? this.state.data.location.region : ''}</h1>
+        
         <h1 >{this.state.data.location ? this.state.data.location.country : ''}</h1>
 
-        <div>
-        <h3>{this.state.data.current? this.state.data.current.last_updated : ''}</h3>
+        <div class="currentData">
+          {this.state.data.current ? <h2>Current:</h2> : ''}
 
+          <h3>{this.state.data.current ? this.state.data.current.last_updated : ''}</h3>
 
-          <h3>{this.state.data.current ? this.state.data.current.temp_c : ''}</h3>
-        <h3>{this.state.data.current ? this.state.data.current.temp_f : ''}</h3>
+          {this.state.tempature ? <p>{this.state.data.current ? <h3>Tempature: {this.state.data.current.temp_c} C</h3> : ''}</p> 
+          : <p>{this.state.data.current ? <h3> Tempature: {this.state.data.current.temp_f} F</h3> : ''}</p> }
 
-        <h3>{this.state.data.current ? this.state.data.current.condition.text : ''}</h3>
+          {this.state.tempature ? <p>{this.state.data.current ? <h3>Feels Like: {this.state.data.current.feelslike_c} C</h3> : ''}</p>
+            : <p>{this.state.data.current ? <h3>Feels Like: {this.state.data.current.feelslike_f} F</h3> : ''}</p>}
 
-        <h3>{this.state.data.current ? this.state.data.current.wind_mph : ''}</h3>
-        <h3>{this.state.data.current ? this.state.data.current.wind_kph : ''}</h3>
+          {this.state.data.current ? <h3>Conditions: {this.state.data.current.condition.text}</h3> : ''}
 
-          <h3>{this.state.data.current ? this.state.data.current.wind_dir : ''}</h3>
+          {this.state.wind ? <p>{this.state.data.current ? <h3>Wind: {this.state.data.current.wind_mph} MPH</h3> : ''}</p> 
+            : <p>{this.state.data.current ? <h3>Wind: {this.state.data.current.wind_kph} KPH</h3> : ''}</p> }
+            
+          {this.state.wind ? <p>{this.state.data.current ? <h3> Wind Gusts: {this.state.data.current.gust_mph} MPH</h3> : ''}</p>
+            : <p>{this.state.data.current ? <h3> Wind Gusts: {this.state.data.current.gust_kph} KPH</h3> : ''}</p>}
+          
+          {this.state.data.current ? <h3> Wind Direction: {this.state.data.current.wind_dir}</h3> : ''}
 
-          <h3>{this.state.data.current ? this.state.data.current.pressure_mb: ''}</h3>
-          <h3>{this.state.data.current ? this.state.data.current.pressure_in : ''}</h3>
+          {this.state.precip ? <p>{this.state.data.current ? <h3>Precipitation: {this.state.data.current.precip_mm} mm</h3> : ''}</p> 
+            : <p>{this.state.data.current ? <h3>Precipitation: {this.state.data.current.precip_in} in</h3> : ''}</p> }
+          
+          {this.state.data.current ? <h3>Humidity: {this.state.data.current.humidity}%</h3> : ''}
 
-          <h3>{this.state.data.current ? this.state.data.current.precip_mm : ''}</h3>
-          <h3>{this.state.data.current ? this.state.data.current.precip_in : ''}</h3>
+          {this.state.data.current ? <h3>Cloud Coverage: {this.state.data.current.cloud}</h3> : ''}
 
-          <h3>{this.state.data.current ? this.state.data.current.humidity : ''}</h3>
+          
 
-          <h3>{this.state.data.current ? this.state.data.current.cloud : ''}</h3>
-
-          <h3>{this.state.data.current ? this.state.data.current.wind_kph : ''}</h3>
-
-          <h3>{this.state.data.current ? this.state.data.current.wind_kph : ''}</h3>
-          <h3>{this.state.data.current ? this.state.data.current.wind_kph : ''}</h3>
+          {this.state.visability ? <p>{this.state.data.current ? <h3> Visability: {this.state.data.current.vis_km}</h3> : ''}</p> 
+            : <p>{this.state.data.current ? <h3> Visability: {this.state.data.current.vis_miles}</h3> : ''}</p> }
+          
+          
         </div>
 
 

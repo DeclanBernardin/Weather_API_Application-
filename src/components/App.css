@@ -20,3 +20,9 @@
 .inputs{
     text-align: center;
 }
+
+.currentData{
+    background-color: #17252A;
+    padding: 10px;
+    width: 300px
+}
