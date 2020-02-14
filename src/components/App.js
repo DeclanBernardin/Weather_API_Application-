@@ -119,9 +119,10 @@ class App extends Component {
 
     return (
       <div class="body">
-        <h1 class="title">The Weather Teller App</h1>
+        <i style={{fontSize: '90px', objectPosition: 'center'}} align='left' class="fas fa-cloud"></i>
+        
         <div class="inputs">
-
+          <h1 class="title" align='right'>The Weather Teller App</h1>
           {/* Location input changes the search state on change*/}
           <Input
             placeholder='enter location'
