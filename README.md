@@ -30,6 +30,7 @@ https://www.weatherapi.com/docs/#
 [X] Displays the next 3 days weather forecast.
 [X] Ability to change the number of days forecast data.
 [X] Ability to toggle metric measurements displayed. 
+[X] The application is mobile compatible and can fit on smaller screens neatly. 
 
 ## Deployed 
 
