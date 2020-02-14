@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 
 .body {
-    height: 1000px;;
+    height: 1600px;;
     margin: 0px;
     background-color: #3AAFA9;
     color: #FEFFFF;
@@ -24,5 +24,17 @@
 .currentData{
     background-color: #17252A;
     padding: 10px;
-    width: 300px
+    width: 300px; 
+}
+
+.futureData {
+    background-color: #2B7A78;
+    padding: 10px;
+    width: 300px; 
+}
+
+.grid {
+    display: grid; 
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
 }
