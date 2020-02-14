@@ -1,53 +1,72 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
 
 
 
 class App extends Component {
 
   state = {
-    search: ''
+    search: '',
+    forecast: '3',
+    data: [],
+    
   }
 
+ 
+
   handleChangeSearchLocation = (event) => {
-    console.log('typing in Input', event.target.value)
+    console.log('typing in Input Location', event.target.value)
     this.setState({
       search: event.target.value
     })
   }
-  
+
+  handleChangeForecast = (event) => {
+    console.log('typing in Input Forecast', event.target.value)
+    this.setState({
+      forecast: event.target.value
+    })
+  }
+
   findWeather = event => {
     event.preventDefault();
-    console.log('searching for weather in', this.state.search);
-    this.props.dispatch({
-      type: 'FETCH_WEATHER',
-      payload: this.state
-    });
-    this.setState({
-      search: ''
-    }); 
-
-  }
+    fetch(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${this.state.search}&days=${this.state.forecast}`)
+      .then(res => res.json())
+      .then((data) => {
+        this.setState({ data: data })
+        console.log('this is the data', this.state.data.location)
+      })
+      .catch(console.log('error'))
+    }
 
 
 
 
   render() {
+
+
+
+
+
+
     return (
       <div>
         <h1>Weather Teller</h1>
         <input placeholder='enter location' onChange={this.handleChangeSearchLocation}></input>
+        <input placeholder='Forecast range' type="number" min="3" max="10" onChange={this.handleChangeForecast}></input>
         <button onClick={this.findWeather}>Find Weather</button>
 
+        
+        <h1>{this.state.data.location ? this.state.data.location.name : '' }</h1>
+        
         <div>
           <p>Powered By</p>
           <a href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a>
-          <br/>
-          <a href="https://www.weatherapi.com/" title="Free Weather API"><img src='//cdn.weatherapi.com/v4/images/apixu-logo-1.png' alt="Weather data by WeatherAPI.com" border="0"/></a>
         </div>
       </div>
     );
   }
 }
 
-export default connect()(App);
+
+
+export default App;
