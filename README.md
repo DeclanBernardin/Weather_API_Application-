@@ -34,7 +34,7 @@ https://www.weatherapi.com/docs/#
 ## Deployed 
 
 The application is live at: 
-
+The application works best and was designed using google chrome. 
 
 
 Created By, 
