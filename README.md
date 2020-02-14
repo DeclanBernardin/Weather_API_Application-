@@ -33,7 +33,8 @@ https://www.weatherapi.com/docs/#
 
 ## Deployed 
 
-The application is live at: 
+The application is live at: https://nostalgic-lamarr-7012e9.netlify.com/
+The application will not work without the API key.
 The application works best and was designed using google chrome. 
 
 

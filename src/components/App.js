@@ -98,7 +98,7 @@ class App extends Component {
         return (
           <div class="futureData">
             <h3>Weather Forecast For:</h3>
-            <h3> {info.date}</h3>
+            <h3 style={{ color: '#17252A'}}> {info.date}</h3>
             {this.state.temperature ? <h3> Max Temperature: {info.day.maxtemp_c} C</h3> : <h3>Max Temperature: {info.day.maxtemp_f} F</h3>}
             {this.state.temperature ? <h3> Avg Temperature: {info.day.avgtemp_c} C</h3> : <h3>Avg Temperature: {info.day.avgtemp_f} F</h3>}
             {this.state.temperature ? <h3> Min Temperature: {info.day.mintemp_c} C</h3> : <h3>Min Temperature: {info.day.mintemp_f} F</h3>}
@@ -152,35 +152,36 @@ class App extends Component {
         </div>
 
         {/*here are the instructions and the location toggle when weather API request is sent out */}
-        {this.state.data.location ? <h1>{this.state.data.location.name}</h1>
+        {this.state.data.location ? <h1 style={{ color: '#17252A', fontSize: '50px' }}>{this.state.data.location.name}</h1>
           : <h1 style={{ color: '#17252A', fontSize: '50px', textAlign: 'center' }}
           >Enter in City Name, Zipcode, IP address, Canada Postalcode, UK Postcode, or Latitude and Longitude</h1>}
 
-        <h1 >{this.state.data.location ? this.state.data.location.region : null}</h1>
+        <h1 style={{ color: '#17252A', fontSize: '50px' }}>{this.state.data.location ? this.state.data.location.region : null}</h1>
 
-        <h1 >{this.state.data.location ? this.state.data.location.country : null}</h1>
+        <h1 style={{ color: '#17252A', fontSize: '50px' }} >{this.state.data.location ? this.state.data.location.country : null}</h1>
 
         {/*Here are all the toggle checkboxes to change the metric measurements  in the data displayed  */}
-        <div>
+        <div class="measurementToggles">
           Temperature Measurement Toggle:
-          <Checkbox onChange={this.toggleTemp} />
+          <Checkbox onChange={this.toggleTemp} style={{color: 'white', margin: '10px' }}/>
           Wind Measurement Toggle:
-          <Checkbox onChange={this.toggleWind} />
+          <Checkbox onChange={this.toggleWind} style={{ color: 'white', margin: '10px' }} />
           Precipitation Measurement Toggle:
-          <Checkbox onChange={this.togglePrecipitation} />
+          <Checkbox onChange={this.togglePrecipitation} style={{ color: 'white', margin: '10px' }} />
           Visibility Measurement Toggle:
-          <Checkbox onChange={this.toggleVisibility} />
+          <Checkbox onChange={this.toggleVisibility} style={{ color: 'white', margin: '10px' }}  />
         </div>
 
       {/*Holds all the current data that is displayed from the API request */}
+        {this.state.data.location ?
         <div class="grid">
           <div class="currentData">
-            {this.state.data.current ? <h2>Current Weather:</h2> : null}
+            {this.state.data.current ? <h2 style={{color: '#DEF2F1'}}>Current Weather:</h2> : null}
 
             <p>{this.state.data.current ? <h3> {this.state.data.current.last_updated} </h3> : null}</p>
 
-            {this.state.temperature ? <p>{this.state.data.current ? <h3>Temperature: {this.state.data.current.temp_c} C</h3> : null}</p>
-              : <p>{this.state.data.current ? <h3> Temperature: {this.state.data.current.temp_f} F</h3> : null}</p>}
+            {this.state.temperature ? <p> {this.state.data.current ? <h3> Temperature: {this.state.data.current.temp_c} C</h3> : null}</p>
+              : <p>  {this.state.data.current ? <h3>Temperature: {this.state.data.current.temp_f} F</h3> : null}</p>}
 
             {this.state.temperature ? <p>{this.state.data.current ? <h3>Feels Like: {this.state.data.current.feelslike_c} C</h3> : null}</p>
               : <p>{this.state.data.current ? <h3>Feels Like: {this.state.data.current.feelslike_f} F</h3> : null}</p>}
@@ -207,7 +208,12 @@ class App extends Component {
           </div>
           {/* The mapped forecast data is then displayed here */}
           {forecast}
-        </div>
+        </div> 
+        : 
+        
+        <div>
+            {/*this div prevents a random bar from showing on the screen */}
+        </div> }
 
         <div>
           <p>Powered By</p>
