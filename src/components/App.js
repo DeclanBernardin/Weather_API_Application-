@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Button from '@material-ui/core/Button'
-import Input from '@material-ui/core/Input'
+import InputSection from './InputSection/InputSection'
 import Checkbox from '@material-ui/core/Checkbox'
 
 
@@ -121,36 +120,8 @@ class App extends Component {
       <div class="body">
         {/*little cloud for fun */}
         <i style={{fontSize: '90px', objectPosition: 'center'}} align='left' class="fas fa-cloud"></i>
-        <div class="inputs">
-          <h1 class="title" align='right'>The Weather Teller App</h1>
-          {/* Location input changes the search state on change*/}
-          <Input
-            placeholder='enter location'
-            style={{ color: '#FEFFFF', margin: '30px' }}
-            onChange={this.handleChangeSearchLocation}
-          ></Input>
 
-          {/*input for the forecast days takes in any number between 3 and 7 starts at 3 */}
-          The next
-          <Input
-            value={this.state.forecast}
-            placeholder='Forecast range'
-            style={{ color: '#FEFFFF', margin: '10px', width: '35px', textAlign: 'center' }}
-            type="number"
-            min="3"
-            max="7"
-            onChange={this.handleChangeForecast}
-          ></Input>
-          day forecast.
-
-          <br />
-
-          {/* when pressed it takes the info collected from the inputs and sends them to the findWeather function */}
-          <Button
-            onClick={this.findWeather}
-            style={{ color: '#FEFFFF', margin: '30px', fontSize: '30px' }}
-          >Find The Weather</Button>
-        </div>
+        <InputSection/>
 
         {/*here are the instructions and the location toggle when weather API request is sent out */}
         {this.state.data.location ? <h1 style={{ color: '#17252A', fontSize: '50px' }}>{this.state.data.location.name}</h1>
