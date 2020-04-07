@@ -19,7 +19,7 @@ class InputSection extends Component {
                 {/*input for the forecast days takes in any number between 3 and 7 starts at 3 */}
                 The next
           <Input
-                    value={this.state.forecast}
+                    // value={this.state.forecast}
                     placeholder='Forecast range'
                     style={{ color: '#FEFFFF', margin: '10px', width: '35px', textAlign: 'center' }}
                     type="number"
