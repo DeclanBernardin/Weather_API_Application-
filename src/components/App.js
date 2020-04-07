@@ -1,30 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import InputSection from './InputSection/InputSection'
-import Checkbox from '@material-ui/core/Checkbox'
-
+import InputSection from './InputSection/InputSection';
+import Weather from './weather/weather'
 
 
 
 class App extends Component {
 
-  
-  // sends a API request to the weather API using the data held in state and using the API key in the .ENV file. 
-  // once it returns with the data it stores it in state to be used 
-  // findWeather = event => {
-  //   event.preventDefault();
-  //   if (this.state.search === '') {
-  //     alert('enter in a location')
-  //   } else {
-  //     fetch(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${this.state.search}&days=${this.state.forecast}`)
-  //       .then(res => res.json())
-  //       .then((data) => {
-  //         this.setState({ data: data })
-  //         console.log('this is the data', this.state.data)
-  //       })
-  //       .catch(console.log('error'))
-  //   }
-  // }
+
+
 
   render() {
 
@@ -59,8 +43,8 @@ class App extends Component {
 
     return (
       <div class="body">
-       <InputSection/>
-
+        <InputSection />
+        <Weather />
         <div>
           <p>Powered By</p>
           <a href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a>
