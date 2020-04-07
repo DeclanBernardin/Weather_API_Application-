@@ -1,9 +1,37 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'; 
 import Button from '@material-ui/core/Button'
 import Input from '@material-ui/core/Input'
 
 
 class InputSection extends Component {
+
+    state = {
+        location: '',
+        forecast: 3,
+    }
+
+    handleChangeSearchLocation = (event) => {
+        this.setState({
+            location: event.target.value
+        })
+        console.log(this.state.location)
+    }
+
+    handleChangeForecast = (event) => {
+        this.setState({
+            forecast: event.target.value
+        })
+        console.log(this.state.forecast)
+    }
+
+    findWeather = () => {
+        console.log(this.state)
+        this.props.dispatch({
+            type: 'FIND_WEATHER',
+            payload: this.state
+        })
+    }
 
     render () {
         return (
@@ -19,7 +47,7 @@ class InputSection extends Component {
                 {/*input for the forecast days takes in any number between 3 and 7 starts at 3 */}
                 The next
           <Input
-                    // value={this.state.forecast}
+                    value={this.state.forecast}
                     placeholder='Forecast range'
                     style={{ color: '#FEFFFF', margin: '10px', width: '35px', textAlign: 'center' }}
                     type="number"
@@ -41,4 +69,4 @@ class InputSection extends Component {
     }
 }
 
-export default InputSection; 
+export default connect() (InputSection); 

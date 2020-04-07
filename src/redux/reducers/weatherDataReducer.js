@@ -1,4 +1,4 @@
-const weatherDataReducer = (state =[] , action) => {
+const weatherDataReducer = (state ={} , action) => {
     switch(action.type){
         case 'ADD_DATA':
             return action.payload;
@@ -6,3 +6,5 @@ const weatherDataReducer = (state =[] , action) => {
         return state; 
     }
 }
+
+export default weatherDataReducer; 
