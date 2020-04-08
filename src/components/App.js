@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import InputSection from './InputSection/InputSection';
 import Weather from './weather/weather'
-
+import Location from './location/location'
 
 
 class App extends Component {
@@ -44,6 +44,7 @@ class App extends Component {
     return (
       <div class="body">
         <InputSection />
+        <Location/>
         <Weather />
         <div>
           <p>Powered By</p>

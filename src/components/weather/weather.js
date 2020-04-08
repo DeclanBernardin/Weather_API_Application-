@@ -7,7 +7,7 @@ class weather extends Component {
     render() {
         return(
             <div>
-                <p>{JSON.stringify(this.props.reduxStore.weatherData.current.temp_c)}</p>
+                {this.props.reduxStore.weatherData.current ? <p>{JSON.stringify(this.props.reduxStore.weatherData.current.temp_c)}</p> : null}
             </div>
         )
     }
