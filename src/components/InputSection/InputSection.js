@@ -4,11 +4,12 @@ import Button from '@material-ui/core/Button'
 import Input from '@material-ui/core/Input'
 
 
+
 class InputSection extends Component {
 
     state = {
         location: '',
-        forecast: 3,
+        forecast: 7,
     }
 
     handleChangeSearchLocation = (event) => {
@@ -18,18 +19,52 @@ class InputSection extends Component {
         console.log(this.state.location)
     }
 
-    handleChangeForecast = (event) => {
-        this.setState({
-            forecast: event.target.value
-        })
-        console.log(this.state.forecast)
-    }
 
     findWeather = () => {
         console.log(this.state)
         this.props.dispatch({
             type: 'FIND_WEATHER',
             payload: this.state
+        })
+        
+        setTimeout(() => {
+            this.handleWeekday()
+       }, 1000); 
+        
+    }
+
+    handleWeekday() {
+
+        let day1 = ''
+        let day = ''
+        if (this.props.reduxStore.weatherData.location){
+            let weekdays = new Date(this.props.reduxStore.weatherData.location.localtime);
+            day1 = weekdays.getDay()
+            console.log('This is the first day', day1)
+        }else {
+            console.log('error with weekday')
+        }
+
+        if (day1 === 0){
+            day = 'Sunday';
+        }else if (day1 === 1){
+            day = 'Monday'; 
+        }else if (day1 === 2){
+            day = 'Tuesday'; 
+        }else if (day1 === 3){
+            day = 'Wednesday'; 
+        }else if (day1 === 4){
+            day = 'Thursday'; 
+        }else if (day1 === 5){
+            day = 'Friday';
+        }else {
+            day = 'Saturday'; 
+        }
+        console.log('today is', day)
+
+        this.props.dispatch({
+            type: 'ADD_DAY',
+            payload: day
         })
     }
 
@@ -44,21 +79,6 @@ class InputSection extends Component {
                     onChange={this.handleChangeSearchLocation}
                 ></Input>
 
-                {/*input for the forecast days takes in any number between 3 and 7 starts at 3 */}
-                The next
-          <Input
-                    value={this.state.forecast}
-                    placeholder='Forecast range'
-                    style={{ color: '#FEFFFF', margin: '10px', width: '35px', textAlign: 'center' }}
-                    type="number"
-                    min="3"
-                    max="7"
-                    onChange={this.handleChangeForecast}
-                ></Input>
-                day forecast.
-      
-          <br />
-
                 {/* when pressed it takes the info collected from the inputs and sends them to the findWeather function */}
                 <Button
                     onClick={this.findWeather}
@@ -69,4 +89,9 @@ class InputSection extends Component {
     }
 }
 
-export default connect() (InputSection); 
+const mapStateToProps = reduxStore => {
+    return {
+        reduxStore
+    };
+};
+export default connect(mapStateToProps) (InputSection); 
