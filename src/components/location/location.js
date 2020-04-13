@@ -9,9 +9,6 @@ class location extends Component {
         return (
             <div>
                 {this.props.reduxStore.weatherData.location ? <p>{this.props.reduxStore.weatherData.location.name}, {this.props.reduxStore.weatherData.location.region}</p> : null}
-                {/* {this.props.reduxStore.dayReducer ? } */}
-                {this.props.reduxStore.weatherData.alert? <p> ALERT: {this.props.reduxStore.weatherData.alert.headline}</p> : null}
-
             </div>
         )
     }
