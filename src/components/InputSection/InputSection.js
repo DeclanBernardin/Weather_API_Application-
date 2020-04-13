@@ -96,19 +96,21 @@ class InputSection extends Component {
 
         return (
             <div>
-                <h1>The Weather Teller App</h1>
+                <h1 className="title">The Weather Teller App</h1>
                 {/* Location input changes the search state on change*/}
                 <Input
                     placeholder='enter location'
-                    style={{ color: '#FEFFFF', margin: '30px' }}
+                    style={{ color: '#A9A9A9', margin: '30px' }}
                     onChange={this.handleChangeSearchLocation}
                 ></Input>
 
                 {/* when pressed it takes the info collected from the inputs and sends them to the findWeather function */}
                 <Button
                     onClick={this.findWeather}
-                    style={{ color: '#FEFFFF', margin: '30px', fontSize: '30px' }}
+                    style={{ color: '#A9A9A9', margin: '30px', fontSize: '30px', textShadow: '1px 1px black' }}
                 >Find The Weather</Button>
+
+                 <p onClick={() => { this.setState({ ...this.state, conversion: !this.state.conversion }) }}>°F | °C</p> 
 
                 {this.state.data.location ?
                     <div className="selected">
@@ -166,6 +168,8 @@ class InputSection extends Component {
 
                     </div >
                     : <h1 style={{padding:'20px'}}>Enter in a location, US Zipcode, UK Postcode, Canada Postalcode, IP address, Latitude/Longitude (decimal degree) or city name.   </h1>}
+                
+                
                 {this.state.data.location ?
                     <div className="weather">
                         <div className="forecast" onClick={() => {

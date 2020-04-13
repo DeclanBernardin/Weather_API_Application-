@@ -3,8 +3,8 @@
 .body {
     
     margin: 0px;
-    background-color: #3AAFA9;
-    color: #FEFFFF;
+    background-color: #FEFFFF;
+    color: #A9A9A9;
     padding: 60px;
     font-family: Montserrat;
     text-shadow: 1px 1px black;
@@ -17,7 +17,7 @@
 
 .forecast {
    border-radius: 25px;
-  background: #73AD21;
+  background: white;
   padding: 20px;
   margin: 10px;
   width: 150px;
@@ -27,7 +27,7 @@
 
 .selected {
    border-radius: 25px;
-  background: #73AD21;
+  background: white;
   padding: 20px;
   margin: 10px;
    width: 300px;
