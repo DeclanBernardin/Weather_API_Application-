@@ -110,7 +110,7 @@ class InputSection extends Component {
                     style={{ color: '#A9A9A9', margin: '30px', fontSize: '30px', textShadow: '1px 1px black' }}
                 >Find The Weather</Button>
 
-                 <p onClick={() => { this.setState({ ...this.state, conversion: !this.state.conversion }) }}>°F | °C</p> 
+                 <p className="FC" onClick={() => { this.setState({ ...this.state, conversion: !this.state.conversion }) }}>°F | °C</p> 
 
                 {this.state.data.location ?
                     <div className="selected">
@@ -175,7 +175,7 @@ class InputSection extends Component {
                         <div className="forecast" onClick={() => {
                             this.setState({
                                 ...this.state,
-                                current: !this.state.current,
+                                current: true,
                                 forecast1: false,
                                 forecast2: false,
                                 forecast3: false,
@@ -192,7 +192,7 @@ class InputSection extends Component {
                             this.setState({
                                 ...this.state,
                                 current: false,
-                                forecast1: !this.state.forecast1,
+                                forecast1: true,
                                 forecast2: false,
                                 forecast3: false,
                                 forecast4: false,
@@ -209,7 +209,7 @@ class InputSection extends Component {
                                 ...this.state,
                                 current: false,
                                 forecast1: false,
-                                forecast2: !this.state.forecast2,
+                                forecast2: true,
                                 forecast3: false,
                                 forecast4: false,
                                 forecast5: false,
@@ -226,7 +226,7 @@ class InputSection extends Component {
                                 current: false,
                                 forecast1: false,
                                 forecast2: false,
-                                forecast3: !this.state.forecast3,
+                                forecast3: true,
                                 forecast4: false,
                                 forecast5: false,
                                 forecast6: false
@@ -243,7 +243,7 @@ class InputSection extends Component {
                                 forecast1: false,
                                 forecast2: false,
                                 forecast3: false,
-                                forecast4: !this.state.forecast4,
+                                forecast4: true,
                                 forecast5: false,
                                 forecast6: false
                             })
@@ -260,7 +260,7 @@ class InputSection extends Component {
                                 forecast2: false,
                                 forecast3: false,
                                 forecast4: false,
-                                forecast5: !this.state.forecast5,
+                                forecast5: true,
                                 forecast6: false
                             })
                         }}>
@@ -277,7 +277,7 @@ class InputSection extends Component {
                                 forecast3: false,
                                 forecast4: false,
                                 forecast5: false,
-                                forecast6: !this.state.forecast6
+                                forecast6: true
                             })
                         }}>
                             {this.state.data.location ? <div>{this.state.data ? <p>{this.state.forecastDay6}</p> : null}</div> : null}
